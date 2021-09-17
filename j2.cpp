@@ -4,7 +4,7 @@ using namespace std;
 class bank
 {
     char name[20],type_acc[8];
-    int acc_no,balence;
+    long long int acc_no,balence;
     public:
         void set_val()
         {
@@ -20,7 +20,7 @@ class bank
         void add_bal()
         {
             int new_money;
-            cout<<"How mouch money you want to add :";
+            cout<<"\nHow mouch money you want to add :";
             cin>>new_money;
             if (new_money>0)
             {
@@ -34,7 +34,7 @@ class bank
             if(balence>10)
             {
                 int wid_m;
-                cout<<"How much amount you widrow :";
+                cout<<"\nHow much amount you widrow :";
                 cin>>wid_m;
                 if(balence>=wid_m)
                 {
@@ -42,7 +42,7 @@ class bank
                 }
                 else
                 {
-                    cout<<"Your balence is less then your reqarment \nSo you can't widrow that money..!";
+                    cout<<"\nYour balence is less then your reqarment \nSo you can't widrow that money..!";
                 }
             }
             
