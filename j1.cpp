@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 using namespace std;
 
 class electricity
@@ -10,7 +11,8 @@ class electricity
     electricity()
     { 
         cout<<"Enter Your name :"<<endl;
-        cin>>name;
+        // cin>>name;
+        gets(name);
         cout<<"Enter Your Total Units :"<<endl;
         cin>>units;
     }
