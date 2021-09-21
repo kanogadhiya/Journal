@@ -1,38 +1,35 @@
 #include<iostream>
 #include<string.h>
 using namespace std;
-// class time24;
-// void cal_in24();
+int ch;
 class time12
 {
     public:
     int hour,minute,choice;
     char type[2];
     void get_data()
-    {
+    {    
         s:
         cout<<"How you Enter time..??\n\n\tPress 1 to Enter time in 12 format";//12to24
         cout<<"\n\tPress 2 to Enter time In 24 Format";//24to12
         cout<<"\nYour choice :";
         cin>>choice;
+        ch=choice;
         cout<<"Enter Hour :";
         cin>>hour;
         cout<<"Enter Minutes :";
         cin>>minute;
         if (choice==1)
-        {
-            cout<<"Enter Time is AM or PM :";
+        {    cout<<"Enter Time is AM or PM :";
             cin>>type;
-            cal_in24();
         }
         else if(choice==2)
-            cal_in12();
+        {}
         else 
         {
             cout<<"Enter Valid choice..!";
             goto s;
         }
-
     }
     void cal_in12()
     {
@@ -47,11 +44,10 @@ class time12
                 hour=12;
             if(hour>0 && hour<25)
             {
-                if(minute>60)
+                if(minute>=60)
                 {
                     hour+=minute/60;
                     minute=minute%60;
-
                 }
                 if(hour>12)
                     hour=hour-12;
@@ -62,29 +58,36 @@ class time12
             else
                 hour-=24;
         }
-    
     }
+};
+class time24 : public time12
+{
+    public:
     void cal_in24()
     {
-        if (strcmp("pm",type))
+        if(minute>=60)
         {
-            // hour+=12;
-            cout<<hour;
-            cout<<minute;
-            cout<<type;
+            hour+=minute/60;
+            minute=minute%60;
         }
-    }
+        
+        if ((strcmp(type,"AM")==0) && (hour==12))
+            hour+=12;
+        else if((strcmp(type,"PM")==0) && (hour<12))
+            hour+=12;
 
-    
+        cout<<hour<<":"<<minute;
+    }
 };
-// class time24 : public time12
-// {
-//     public:
-    
-// };
 int main()
 {
-    time12 o1;
-    o1.get_data();    
+    // int ch;
+    time24 o1;
+    o1.get_data(); 
+    if (ch==1)
+        o1.cal_in24();
+    else    
+        o1.cal_in12(); 
+
     return 0;
 }
